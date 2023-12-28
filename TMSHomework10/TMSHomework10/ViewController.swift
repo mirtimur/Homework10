@@ -28,18 +28,16 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
     }
     
     @IBAction func senderNumberButtonPressed(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
         
         if stillTiping{
-            if displayResultLabel.text?.count ?? 0 < 9 {
+            if displayResultLabel.text?.count ?? 0  < 9 {
                 displayResultLabel.text = (displayResultLabel.text ?? "0") + number
             }
-        } else {
+        } else  {
             displayResultLabel.text = number
             stillTiping = true
         }
@@ -94,17 +92,16 @@ class ViewController: UIViewController {
         if firstOperand == 0 {
             currentInpunt = currentInpunt / 100
         } else {
-            secondOperand = firstOperand * currentInpunt / 100
+            currentInpunt = currentInpunt / 100
         }
         stillTiping = false
     }
     
     @IBAction func commaButtonPressed(_ sender: UIButton) {
-        if stillTiping && !dotIsPlaced {
+        if !dotIsPlaced {
             displayResultLabel.text = (displayResultLabel.text ?? "0") + "."
             dotIsPlaced = true
-        } else if !stillTiping && !dotIsPlaced {
-            displayResultLabel.text = "0."
+            stillTiping = true
         }
     }
 }
